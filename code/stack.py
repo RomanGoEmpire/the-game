@@ -18,8 +18,8 @@ class Stack:
     def __repr__(self) -> str:
         return self.__str__()
 
-    def draw_card(self) -> int:
-        return self.draw_pile.pop()
+    def draw_card(self, amount) -> int:
+        return [self.draw_pile.pop() for _ in range(amount)]
 
     def place_card(self, card: int, index: int) -> None:
         if self.is_legal(card, index):

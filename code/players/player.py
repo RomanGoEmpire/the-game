@@ -21,8 +21,9 @@ class Player:
     def block_stack(self, stack) -> list[int]:
         pass
 
-    def draw_card(self, stack) -> None:
-        self.hand.append(stack.draw_card())
+    def draw_card(self, new_cards) -> None:
+        print(f"{self.name} draws {new_cards}")
+        self.hand += new_cards
         self.sort_hand()
 
     # ! Add Logic in Child

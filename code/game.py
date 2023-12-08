@@ -19,10 +19,14 @@ class Game:
         self.current_player = self.players[index]
         return self.players[index]
 
+    def draws_card(self, player: Player) -> None:
+        amount = 6 - len(player.hand)
+        new_cards = self.stack.draw_card(amount)
+        player.draw_card(new_cards)
+
     def deal_cards(self) -> None:
         for player in self.players:
-            while len(player.hand) < 6:
-                player.draw_card(self.stack)
+            self.draws_card(player)
 
     def play_round(self) -> None:
         print(f"Its {self.current_player}'s turn.")
@@ -48,15 +52,13 @@ class Game:
                     if len(self.stack.draw_pile) == 0:
                         print("No cards left in draw pile.")
                     else:
-                        self.current_player.draw_card(self.stack)
+                        self.draws_card(self.current_player)
                     print(f"{self.current_player} stops turn.")
 
                     break
-                else:
-                    print(f"{self.current_player} continues turn.")
-                    continue
-            else:
-                print(f"You have to play at least 2 cards.")
+
+                print(f"{self.current_player} continues turn.")
+            print(f"You have to play at least 2 cards.")
 
 
 if __name__ == "__main__":
