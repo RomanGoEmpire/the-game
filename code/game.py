@@ -40,15 +40,17 @@ class Game:
                 print(e)
                 raise ValueError
 
-            # Draw card
-            if len(self.stack.draw_pile) == 0:
-                print("No cards left in draw pile.")
-
             # Stop turn
             if len(self.current_player.hand) <= 4:
                 stop_turn = self.current_player.continue_turn()
                 if stop_turn:
+                    # Draw card
+                    if len(self.stack.draw_pile) == 0:
+                        print("No cards left in draw pile.")
+                    else:
+                        self.current_player.draw_card(self.stack)
                     print(f"{self.current_player} stops turn.")
+
                     break
                 else:
                     print(f"{self.current_player} continues turn.")
