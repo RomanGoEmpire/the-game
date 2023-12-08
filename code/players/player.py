@@ -24,3 +24,7 @@ class Player:
     def draw_card(self, stack) -> None:
         self.hand.append(stack.draw_card())
         self.sort_hand()
+
+    # ! Add Logic in Child
+    def continue_turn(self) -> bool:
+        pass

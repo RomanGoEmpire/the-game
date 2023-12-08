@@ -11,17 +11,23 @@ class Stack:
         }
 
     def __str__(self) -> str:
-        return f"Stack: {self.stack}"
+        return (
+            f"Stack: {self.stack.get('cards')}\nRemaining Cards: {len(self.draw_pile)}"
+        )
+
+    def __repr__(self) -> str:
+        return self.__str__()
 
     def draw_card(self) -> int:
         return self.draw_pile.pop()
 
     def place_card(self, card: int, index: int) -> None:
         if self.is_legal(card, index):
-            print(f"Stack before: {self.stack}")
-            print(f"Placing {card} on stack {index}.")
+            print(f"Stack before: {self.stack.get('cards')}")
+            print(f"Placing {card} on card {self.stack.get('cards')[index]}")
             self.stack["cards"][index] = card
-            print(f"Stack after: {self.stack}")
+            print(f"Stack after: {self.stack.get('cards')}")
+            print("")
         else:
             raise ValueError(
                 f"Card {card} cannot be placed on stack {self.stack[index]}."

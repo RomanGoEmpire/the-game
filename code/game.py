@@ -46,12 +46,12 @@ class Game:
 
             # Stop turn
             if len(self.current_player.hand) <= 4:
-                # TODO: Change it that the player can decide if he wants to stop
-                # Currently the decision is givent over the input
-                stop_turn = input("Do you want to stop your turn? (y/n)")
-                if stop_turn == "y":
+                stop_turn = self.current_player.continue_turn()
+                if stop_turn:
+                    print(f"{self.current_player} stops turn.")
                     break
                 else:
+                    print(f"{self.current_player} continues turn.")
                     continue
             else:
                 print(f"You have to play at least 2 cards.")
