@@ -15,3 +15,26 @@ class Stack:
 
     def draw_card(self) -> int:
         return self.draw_pile.pop()
+
+    def place_card(self, card: int, index: int) -> None:
+        if self.is_legal(card, index):
+            print(f"Stack before: {self.stack}")
+            print(f"Placing {card} on stack {index}.")
+            self.stack["cards"][index] = card
+            print(f"Stack after: {self.stack}")
+        else:
+            raise ValueError(
+                f"Card {card} cannot be placed on stack {self.stack[index]}."
+            )
+
+    def is_legal(self, card: int, index: int) -> bool:
+        if self.stack["direction"][index] == "up":
+            return (
+                card > self.stack["cards"][index]
+                or card == self.stack["cards"][index] - 10
+            )
+        else:
+            return (
+                card < self.stack["cards"][index]
+                or card == self.stack["cards"][index] + 10
+            )
