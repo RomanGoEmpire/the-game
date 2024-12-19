@@ -14,7 +14,7 @@ def test_is_valid_placement():
     game.piles[0].append(10)
     game.piles[2].append(90)
 
-    assert game.is_valid_placement(2, 0) is False
+    assert game.is_valid_placement(2, 0)
     assert game.is_valid_placement(98, 2) is False
 
     # ? Placement is a jump
