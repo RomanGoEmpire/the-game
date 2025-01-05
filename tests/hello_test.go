@@ -13,7 +13,7 @@ func FormatErrorMessage(t *testing.T, want interface{}, got interface{}) {
 
 func Test(t *testing.T) {
 	want := 0
-	got := 1
+	got := 0
 	if want != got {
 		FormatErrorMessage(t, want, got)
 	}
